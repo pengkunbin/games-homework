@@ -2,4 +2,9 @@
 */main.dSYM
 **/main
 
+*/CMakeFiles
+*/cmake_install.cmake
+*/CMakeCache.txt
+*/Makefile
+
 .vscode

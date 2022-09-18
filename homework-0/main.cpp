@@ -2,6 +2,7 @@
 #include<eigen3/Eigen/Core>
 #include<eigen3/Eigen/Dense>
 #include<iostream>
+#include "homework.h"
 
 int main(){
 
@@ -51,5 +52,8 @@ int main(){
     
     Eigen::RowVector3f rowv(1.0f,2.0f,3.0f);
     std::cout << rowv * i  << std::endl;
+
+    homework();
+
     return 0;
 }
