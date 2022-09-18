@@ -61,17 +61,6 @@ int main(int argc, const char** argv)
 {
     float angle = 0;
     bool command_line = false;
-    std::string filename = "output.png";
-
-    if (argc >= 3) {
-        command_line = true;
-        angle = std::stof(argv[2]); // -r by default
-        if (argc == 4) {
-            filename = std::string(argv[3]);
-        }
-        else
-            return 0;
-    }
 
     rst::rasterizer r(700, 700);
 
@@ -87,22 +76,6 @@ int main(int argc, const char** argv)
     int key = 0;
     int frame_count = 0;
 
-    if (command_line) {
-        r.clear(rst::Buffers::Color | rst::Buffers::Depth);
-
-        r.set_model(get_model_matrix(angle));
-        r.set_view(get_view_matrix(eye_pos));
-        r.set_projection(get_projection_matrix(45, 1, 0.1, 50));
-
-        r.draw(pos_id, ind_id, rst::Primitive::Triangle);
-        cv::Mat image(700, 700, CV_32FC3, r.frame_buffer().data());
-        image.convertTo(image, CV_8UC3, 1.0f);
-
-        cv::imwrite(filename, image);
-
-        return 0;
-    }
-
     while (key != 27) {
         r.clear(rst::Buffers::Color | rst::Buffers::Depth);
 
@@ -112,9 +85,13 @@ int main(int argc, const char** argv)
 
         r.draw(pos_id, ind_id, rst::Primitive::Triangle);
 
+        std::cout << "r.frame_buffer().data()" << r.frame_buffer() << '\n';
+        
+        // 通过 opencv 打开一个可视窗口
         cv::Mat image(700, 700, CV_32FC3, r.frame_buffer().data());
         image.convertTo(image, CV_8UC3, 1.0f);
         cv::imshow("image", image);
+
         key = cv::waitKey(10);
 
         std::cout << "frame count: " << frame_count++ << '\n';
