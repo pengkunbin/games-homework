@@ -63,16 +63,21 @@ int main(int argc, const char** argv)
     float angle = 0;
     bool command_line = false;
 
+    // 创建一个 700 * 700 分辨率的渲染器
     rst::rasterizer r(700, 700);
 
+    // 将摄像机的位置摆放在 (0,0,5) 坐标上
     Eigen::Vector3f eye_pos = {0, 0, 5};
 
+    // 初始化三个点
     std::vector<Eigen::Vector3f> pos{{2, 0, -2}, {0, 2, -2}, {-2, 0, -2}};
-
+    // 初始化一个点
     std::vector<Eigen::Vector3i> ind{{0, 1, 2}};
 
     auto pos_id = r.load_positions(pos);
+    // std::cout << "pos_id: " << pos_id;
     auto ind_id = r.load_indices(ind);
+    // std::cout << "ind_id: " << ind_id;
 
     int key = 0;
     int frame_count = 0;
@@ -85,8 +90,6 @@ int main(int argc, const char** argv)
         r.set_projection(get_projection_matrix(45, 1, 0.1, 50));
 
         r.draw(pos_id, ind_id, rst::Primitive::Triangle);
-
-        std::cout << "r.frame_buffer().data()" << r.frame_buffer() << '\n';
         
         // 通过 opencv 打开一个可视窗口
         cv::Mat image(700, 700, CV_32FC3, r.frame_buffer().data());
