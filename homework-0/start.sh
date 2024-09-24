@@ -9,4 +9,4 @@ cmake ..
 make
 
 # 运行可执行文件
-./Rasterizer
+./Transformation

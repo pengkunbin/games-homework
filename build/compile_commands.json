@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/jizou/Documents/games-homework/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/Transformation.dir/main.cpp.o -c /Users/jizou/Documents/games-homework/homework-0/main.cpp",
+  "file": "/Users/jizou/Documents/games-homework/homework-0/main.cpp",
+  "output": "CMakeFiles/Transformation.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/jizou/Documents/games-homework/build",
+  "command": "/usr/bin/clang++  -I/usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/Transformation.dir/homework.cpp.o -c /Users/jizou/Documents/games-homework/homework-0/homework.cpp",
+  "file": "/Users/jizou/Documents/games-homework/homework-0/homework.cpp",
+  "output": "CMakeFiles/Transformation.dir/homework.cpp.o"
+}
+]
